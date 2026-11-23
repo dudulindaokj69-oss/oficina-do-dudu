@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Manutenção automotiva, pneus, óleos, filtros e acessórios. Entre em contato e solicite um orçamento." />
+  <title>Dorilio Henrique | Oficina e Autopeças</title>
+  <style>
+    :root{--bg:#101216;--panel:#191d23;--text:#f4f5f7;--muted:#b8bec8;--accent:#f5a623;--accent2:#ffd27a;--line:#2b313a}
+    *{box-sizing:border-box} html{scroll-behavior:smooth} body{margin:0;font-family:Arial,Helvetica,sans-serif;background:var(--bg);color:var(--text);line-height:1.6}
+    a{color:inherit;text-decoration:none}.container{width:min(1120px,92%);margin:auto}
+    header{position:sticky;top:0;z-index:10;background:rgba(16,18,22,.94);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+    .nav{min-height:72px;display:flex;align-items:center;justify-content:space-between;gap:20px}.brand{font-weight:900;letter-spacing:.3px;font-size:1.05rem}.brand span{color:var(--accent)}
+    nav{display:flex;gap:22px;align-items:center;font-size:.94rem;color:var(--muted)}nav a:hover{color:var(--accent)}
+    .btn{display:inline-flex;align-items:center;justify-content:center;background:var(--accent);color:#171717;padding:13px 20px;border-radius:7px;font-weight:800;border:0;transition:.2s}.btn:hover{background:var(--accent2);transform:translateY(-2px)}.btn.outline{background:transparent;color:var(--text);border:1px solid #555e6b}.btn.outline:hover{border-color:var(--accent);color:var(--accent)}
+    .hero{padding:94px 0 86px;background:radial-gradient(ellipse at 80% 20%,rgba(245,166,35,.16),transparent 38%),linear-gradient(120deg,#101216,#191d23)}
+    .hero-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:50px;align-items:center}.eyebrow{color:var(--accent);font-size:.8rem;font-weight:900;letter-spacing:2px;text-transform:uppercase}
+    h1{font-size:clamp(2.5rem,6vw,4.7rem);line-height:1.04;margin:16px 0 20px;letter-spacing:-2px}h1 span{color:var(--accent)}.hero p{font-size:1.12rem;color:var(--muted);max-width:610px}.actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:28px}
+    .hero-card{min-height:320px;border:1px solid #3b3428;border-radius:18px;padding:30px;background:linear-gradient(145deg,#252a31,#171a1f);display:flex;flex-direction:column;justify-content:flex-end;box-shadow:0 24px 70px #0006;position:relative;overflow:hidden}
+    .hero-card:before{content:'⚙';position:absolute;right:14px;top:-54px;font-size:18rem;line-height:1;color:#f5a62312}.hero-card strong{font-size:1.5rem;position:relative}.hero-card p{font-size:1rem;position:relative;margin-bottom:0}
+    section{padding:76px 0}.section-head{max-width:650px;margin-bottom:34px}.section-head h2{font-size:clamp(2rem,4vw,2.8rem);line-height:1.1;margin:10px 0}.section-head p{color:var(--muted);margin:0}
+    .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}.card{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:25px}.card .icon{font-size:1.8rem}.card h3{margin:12px 0 6px}.card p{color:var(--muted);margin:0;font-size:.96rem}
+    .products{background:#15191f}.product-list{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}.product{border:1px solid var(--line);background:#1d2229;padding:22px;border-radius:10px}.product b{display:block;margin:9px 0 4px}.product span{font-size:1.7rem}
+    .why{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center}.why-panel{padding:30px;border-radius:14px;background:linear-gradient(145deg,#28231b,#191d23);border:1px solid #4b3a22}.why-panel h3{font-size:1.6rem;margin-top:0}.why-panel li{margin:12px 0;color:var(--muted)}
+    .contact{background:linear-gradient(120deg,#211b12,#171a1f);border-top:1px solid #4b3a22}.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:40px}.contact-info{display:grid;gap:14px}.contact-item{padding:16px 18px;background:#ffffff08;border:1px solid #ffffff16;border-radius:9px}.contact-item small{display:block;color:var(--muted);margin-bottom:4px}.contact-item a:hover{color:var(--accent)}
+    footer{border-top:1px solid var(--line);padding:24px 0;color:var(--muted);font-size:.88rem}.footer-row{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
+    @media(max-width:800px){nav{display:none}.hero-grid,.why,.contact-grid{grid-template-columns:1fr}.hero{padding:68px 0}.hero-card{min-height:230px}.cards{grid-template-columns:1fr 1fr}.product-list{grid-template-columns:1fr 1fr}}
+    @media(max-width:520px){.cards,.product-list{grid-template-columns:1fr}section{padding:58px 0}.nav{min-height:64px}h1{letter-spacing:-1px}}
+
+
+    /* ANIMACOES JAVASCRIPT: entrada ao rolar, flutuacao e resposta ao ponteiro */
+    .motion-ready [data-reveal]{opacity:0;transform:translate3d(0,28px,0);transition:opacity .75s ease,transform .75s cubic-bezier(.2,.7,.2,1);transition-delay:var(--reveal-delay,0ms)}
+    .motion-ready [data-reveal].is-visible{opacity:1;transform:translate3d(0,0,0)}
+    .hero-card{animation:heroHover 6s ease-in-out infinite;transform-origin:center}
+    .hero-card:before{animation:gearDrift 18s linear infinite}
+    .hero:after{animation:ringPulse 7s ease-in-out infinite}
+    .chat-launcher{animation:launcherGlow 3.5s ease-in-out infinite}
+    .btn:active,.chat-launcher:active{transform:scale(.97)}
+    @keyframes heroHover{0%,100%{translate:0 0}50%{translate:0 -9px}}
+    @keyframes gearDrift{from{transform:rotate(0deg) translateY(0)}to{transform:rotate(360deg) translateY(0)}}
+    @keyframes ringPulse{0%,100%{scale:1;opacity:.75}50%{scale:1.06;opacity:1}}
+    @keyframes launcherGlow{0%,100%{box-shadow:0 8px 30px #0008,0 0 0 0 rgba(40,215,255,.18)}50%{box-shadow:0 8px 34px #0009,0 0 0 9px rgba(40,215,255,0)}}
+    .motion-pointer{transition:background-position .15s ease,box-shadow .2s ease}
+    @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.hero-card,.hero-card:before,.hero:after,.chat-launcher{animation:none!important}.motion-ready [data-reveal]{opacity:1!important;transform:none!important;transition:none!important}}
+
+    /* Assistente virtual */
+    .chat-launcher{position:fixed;right:22px;bottom:22px;z-index:30;border:0;border-radius:999px;background:var(--accent);color:#171717;padding:15px 20px;font-weight:900;box-shadow:0 8px 30px #0008;cursor:pointer}
+    .chat-panel{position:fixed;right:22px;bottom:88px;z-index:31;width:min(370px,calc(100vw - 28px));height:min(540px,calc(100vh - 120px));display:none;flex-direction:column;background:#191d23;border:1px solid #3b424d;border-radius:16px;box-shadow:0 18px 60px #000b;overflow:hidden}
+    .chat-panel.open{display:flex}.chat-head{padding:16px;background:#242a32;border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between}
+    .chat-head strong{display:block}.chat-head small{color:var(--muted)}.chat-close{border:0;background:transparent;color:white;font-size:1.5rem;cursor:pointer}
+    .chat-messages{padding:14px;overflow-y:auto;display:flex;flex-direction:column;gap:10px;flex:1}
+    .chat-msg{max-width:88%;padding:10px 12px;border-radius:12px;font-size:.92rem;white-space:pre-wrap}
+    .chat-msg.bot{background:#2a3039;align-self:flex-start;color:var(--text);border-bottom-left-radius:3px}.chat-msg.user{background:var(--accent);color:#171717;align-self:flex-end;border-bottom-right-radius:3px}
+    .chat-quick{display:flex;gap:7px;flex-wrap:wrap;padding:0 12px 12px}.chat-quick button{background:#252b33;border:1px solid #444d59;color:var(--text);border-radius:20px;padding:7px 10px;cursor:pointer;font-size:.8rem}
+    .chat-form{display:flex;gap:8px;padding:12px;border-top:1px solid var(--line)}.chat-form input{min-width:0;flex:1;background:#101216;border:1px solid #424a55;border-radius:8px;padding:11px;color:white;font-size:.92rem}.chat-form button{border:0;border-radius:8px;background:var(--accent);font-weight:900;padding:0 14px;cursor:pointer}
+    .chat-note{padding:0 14px 10px;color:#9da6b2;font-size:.72rem}@media(max-width:520px){.chat-launcher{right:14px;bottom:14px}.chat-panel{right:14px;bottom:76px}}
+
+
+    /* TEMA FUTURISTA: grafite profundo, azul elétrico e vidro fosco */
+    :root{
+      --bg:#070b14;--panel:rgba(15,24,40,.82);--text:#edf6ff;--muted:#a5b5ca;
+      --accent:#28d7ff;--accent2:#8af0ff;--line:rgba(83,190,230,.22);
+    }
+    body{
+      background:
+        radial-gradient(ellipse at 12% 8%,rgba(0,170,255,.13),transparent 34%),
+        radial-gradient(ellipse at 88% 35%,rgba(35,95,255,.10),transparent 36%),
+        linear-gradient(145deg,#060912 0%,#0a1221 52%,#070b14 100%);
+      color:var(--text);font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;
+    }
+    body:before{content:"";position:fixed;inset:0;pointer-events:none;z-index:-1;opacity:.16;
+      background-image:linear-gradient(rgba(91,190,255,.11) 1px,transparent 1px),linear-gradient(90deg,rgba(91,190,255,.11) 1px,transparent 1px);
+      background-size:46px 46px;mask-image:linear-gradient(to bottom,black,transparent 85%)}
+    header{background:rgba(5,10,20,.78);border-bottom:1px solid var(--line);box-shadow:0 8px 35px #0005}
+    .brand{letter-spacing:1.4px}.brand span,h1 span{color:var(--accent);text-shadow:0 0 22px rgba(40,215,255,.35)}
+    nav a{transition:color .2s,text-shadow .2s}nav a:hover{color:var(--accent);text-shadow:0 0 14px #28d7ff80}
+    .btn{background:linear-gradient(110deg,#13bde9,#48e4ff);color:#04111b;border-radius:9px;box-shadow:0 0 22px rgba(40,215,255,.20);transition:transform .2s,box-shadow .2s,filter .2s}
+    .btn:hover{background:linear-gradient(110deg,#63eaff,#a1f4ff);box-shadow:0 0 30px rgba(40,215,255,.42);filter:saturate(1.12)}
+    .btn.outline{border-color:rgba(72,220,255,.55);color:#dffaff;background:rgba(8,20,35,.35)}
+    .btn.outline:hover{border-color:var(--accent);color:var(--accent);background:rgba(40,215,255,.08)}
+    .hero{position:relative;isolation:isolate;overflow:hidden;background:radial-gradient(ellipse at 78% 35%,rgba(0,190,255,.20),transparent 36%),linear-gradient(125deg,#080d19,#0c1b30 58%,#09101d)}
+    .hero:after{content:"";position:absolute;width:440px;height:440px;border:1px solid rgba(40,215,255,.16);border-radius:50%;right:-100px;top:-150px;box-shadow:0 0 0 35px rgba(40,215,255,.025),0 0 0 75px rgba(40,215,255,.02),inset 0 0 65px rgba(40,215,255,.08);z-index:-1;transform:translate(var(--parallax-x,0px),var(--parallax-y,0px));transition:transform .25s ease-out}
+    .eyebrow{color:var(--accent);letter-spacing:2.6px;text-shadow:0 0 16px rgba(40,215,255,.25)}
+    h1{ text-shadow:0 8px 40px #0008 }
+    .hero-card,.card,.product,.why-panel,.contact-item{
+      background:linear-gradient(145deg,rgba(19,35,57,.88),rgba(9,17,31,.88));
+      border:1px solid rgba(75,201,245,.24);border-radius:16px;
+      box-shadow:0 18px 55px rgba(0,0,0,.24),inset 0 1px rgba(255,255,255,.035);
+      backdrop-filter:blur(12px);
+    }
+    .hero-card{min-height:340px;box-shadow:0 22px 75px #0007,0 0 35px rgba(25,194,255,.10)}
+    .hero-card:before{content:'⚙';color:rgba(40,215,255,.09);filter:drop-shadow(0 0 24px rgba(40,215,255,.18))}
+    section{position:relative}
+    .cards .card,.product{transition:transform .22s,border-color .22s,box-shadow .22s}
+    .cards .card:hover,.product:hover{transform:translateY(-5px);border-color:rgba(40,215,255,.58);box-shadow:0 18px 42px #0005,0 0 24px rgba(40,215,255,.10)}
+    .products{background:linear-gradient(180deg,rgba(7,13,24,.92),rgba(10,20,35,.92));border-top:1px solid rgba(40,215,255,.10);border-bottom:1px solid rgba(40,215,255,.10)}
+    .product{background:rgba(14,27,45,.82)}
+    .why-panel{background:linear-gradient(145deg,rgba(13,39,59,.92),rgba(10,19,33,.92))}
+    .contact{background:radial-gradient(ellipse at 15% 50%,rgba(0,177,235,.12),transparent 42%),linear-gradient(120deg,#0b1423,#080d18);border-top:1px solid var(--line)}
+    .contact-item{background:rgba(12,27,44,.72)}.contact-item a:hover{color:var(--accent)}
+    footer{border-color:var(--line);background:#060a12}
+    .chat-launcher{background:linear-gradient(110deg,#12bce8,#55e6ff);color:#03111b;box-shadow:0 0 28px rgba(40,215,255,.35),0 8px 30px #0008}
+    .chat-panel{background:rgba(8,16,29,.97);border:1px solid rgba(55,210,255,.42);box-shadow:0 20px 75px #000c,0 0 35px rgba(40,215,255,.13);backdrop-filter:blur(18px)}
+    .chat-head{background:linear-gradient(110deg,#102b43,#101b30);border-bottom:1px solid var(--line)}
+    .chat-head strong{color:#e8faff}.chat-head small{color:#8edcf0}
+    .chat-msg.bot{background:#14283d;border:1px solid rgba(65,184,225,.18);color:#e9f7ff}
+    .chat-msg.user{background:linear-gradient(110deg,#16bfe9,#61e7ff);color:#03131c}
+    .chat-quick button{background:#10243a;border-color:rgba(65,184,225,.30);color:#dff8ff}.chat-quick button:hover{border-color:var(--accent);color:var(--accent)}
+    .chat-form{background:#081321;border-top:1px solid var(--line)}
+    .chat-form input{background:#0b1a2c;border-color:rgba(65,184,225,.32);color:#f2fbff;outline:none}
+    .chat-form input:focus{border-color:var(--accent);box-shadow:0 0 0 3px rgba(40,215,255,.12)}
+    .chat-form button{background:linear-gradient(110deg,#12bce8,#55e6ff);color:#03111b}
+    .chat-note{color:#91a9bd}
+    @media(prefers-reduced-motion:no-preference){.hero-card{animation:floatGlow 6s ease-in-out infinite}@keyframes floatGlow{0%,100%{transform:translateY(0)}50%{transform:translateY(-5px)}}}
+    @media(max-width:800px){.hero:after{right:-230px;opacity:.6}.hero-card{min-height:250px}}
+
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container nav">
+      <a class="brand" href="#inicio">DORILIO <span>HENRIQUE</span></a>
+      <nav aria-label="Navegação principal"><a href="#servicos">Serviços</a><a href="#produtos">Produtos</a><a href="#sobre">A oficina</a><a href="#contato">Contato</a></nav>
+      <a class="btn" href="https://wa.me/5567996642105" target="_blank" rel="noopener">Pedir orçamento</a>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" id="inicio">
+      <div class="container hero-grid">
+        <div>
+          <div class="eyebrow">Oficina • Manutenção • Autopeças</div>
+          <h1>Cuidado de verdade para o seu <span>veículo.</span></h1>
+          <p>Manutenção automotiva e produtos para manter seu carro em dia. Conte com atendimento direto para encontrar o serviço ou a peça certa para você.</p>
+          <div class="actions"><a class="btn" href="https://wa.me/5567996642105?text=Ol%C3%A1!%20Gostaria%20de%20solicitar%20um%20or%C3%A7amento." target="_blank" rel="noopener">Falar pelo WhatsApp</a><a class="btn outline" href="#servicos">Conhecer serviços</a></div>
+        </div>
+        <div class="hero-card"><strong>Seu carro em boas mãos.</strong><p>Manutenção, pneus, óleos, filtros e muito mais em um só lugar.</p></div>
+      </div>
+    </section>
+
+    <section id="servicos">
+      <div class="container">
+        <div class="section-head"><div class="eyebrow">O que fazemos</div><h2>Serviços para cuidar do seu veículo</h2><p>Atendimento para manutenção e cuidados automotivos. Consulte a disponibilidade e solicite seu orçamento.</p></div>
+        <div class="cards">
+          <article class="card"><div class="icon">🔧</div><h3>Manutenção automotiva</h3><p>Cuidados e serviços de manutenção para ajudar seu veículo a rodar com segurança.</p></article>
+          <article class="card"><div class="icon">🛞</div><h3>Pneus</h3><p>Opções de pneus para diferentes veículos e necessidades. Consulte medidas e marcas disponíveis.</p></article>
+          <article class="card"><div class="icon">🛢️</div><h3>Óleos e filtros</h3><p>Óleos lubrificantes e filtros para a manutenção periódica do seu veículo.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="products" id="produtos">
+      <div class="container">
+        <div class="section-head"><div class="eyebrow">Loja automotiva</div><h2>Produtos para seu carro</h2><p>Consulte pelo WhatsApp os modelos, marcas, medidas, estoque e valores disponíveis.</p></div>
+        <div class="product-list">
+          <div class="product"><span>🛞</span><b>Pneus</b><small>Para diversos modelos e medidas.</small></div>
+          <div class="product"><span>🛢️</span><b>Óleos lubrificantes</b><small>Opções conforme especificação do veículo.</small></div>
+          <div class="product"><span>⚙️</span><b>Filtros</b><small>Filtros de óleo, ar e outros.</small></div>
+          <div class="product"><span>🔩</span><b>Peças e acessórios</b><small>Consulte disponibilidade.</small></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="sobre">
+      <div class="container why">
+        <div><div class="eyebrow">A oficina</div><div class="section-head"><h2>Atendimento próximo e solução para o seu veículo.</h2><p>Nosso objetivo é ajudar você a cuidar do seu carro, seja com manutenção ou encontrando os produtos adequados para cada necessidade.</p></div><a class="btn" href="https://wa.me/5567996642105" target="_blank" rel="noopener">Entre em contato</a></div>
+        <div class="why-panel"><h3>Como podemos ajudar?</h3><ul><li>Orientação para encontrar o produto adequado.</li><li>Orçamento de pneus, óleos e filtros.</li><li>Informações sobre serviços de manutenção.</li><li>Atendimento direto pelo WhatsApp.</li></ul></div>
+      </div>
+    </section>
+
+    <section class="contact" id="contato">
+      <div class="container contact-grid">
+        <div><div class="eyebrow">Fale com a gente</div><div class="section-head"><h2>Vamos cuidar do seu carro?</h2><p>Entre em contato para tirar dúvidas, consultar produtos ou pedir um orçamento.</p></div><a class="btn" href="https://wa.me/5567996642105?text=Ol%C3%A1!%20Vim%20pelo%20site%20e%20gostaria%20de%20mais%20informa%C3%A7%C3%B5es." target="_blank" rel="noopener">Chamar no WhatsApp</a></div>
+        <div class="contact-info">
+          <div class="contact-item"><small>Responsável</small><strong>Dorilio Henrique Alves Soares</strong></div>
+          <div class="contact-item"><small>Telefone / WhatsApp</small><a href="https://wa.me/5567996642105" target="_blank" rel="noopener">(67) 99664-2105</a></div>
+          <div class="contact-item"><small>E-mail</small><a href="mailto:dudulindaokj69@gmail.com">dudulindaokj69@gmail.com</a></div>
+          <div class="contact-item"><small>Instagram</small><a href="https://www.instagram.com/henriquesbzz?jplx+MThkxeTk5Nz-UxZw==" target="_blank" rel="noopener">@henriquesbzz</a></div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <button class="chat-launcher" id="chatLauncher" type="button">💬 Tire suas dúvidas</button>
+  <section class="chat-panel" id="chatPanel" role="dialog" aria-label="Assistente virtual da oficina">
+    <div class="chat-head"><div><strong>🤖 Assistente Dorilio Henrique</strong><small>Assistente virtual • atendimento automático</small></div><button class="chat-close" id="chatClose" type="button" aria-label="Fechar">×</button></div>
+    <div class="chat-messages" id="chatMessages" aria-live="polite"><div class="chat-msg bot">Olá! 👋 Sou o assistente virtual da oficina Dorilio Henrique. Posso ajudar com dúvidas sobre horários, serviços, preços e produtos. O que você gostaria de saber?</div></div>
+    <div class="chat-quick"><button type="button" data-question="Qual é o horário de funcionamento?">🕒 Horários</button><button type="button" data-question="Quanto custa um serviço?">💰 Valores</button><button type="button" data-question="Quais produtos vocês vendem?">🛞 Produtos</button><button type="button" data-question="Quero falar com um atendente.">📲 Atendente</button></div>
+    <div class="chat-note">Horários cadastrados; preços e estoque são confirmados pela equipe.</div>
+    <form class="chat-form" id="chatForm" novalidate><input id="chatInput" type="text" placeholder="Digite sua pergunta..." autocomplete="off" aria-label="Digite sua pergunta"/><button id="chatSend" type="button">Enviar</button></form>
+  </section>
+  <footer><div class="container footer-row"><span>© <span id="year"></span> Dorilio Henrique • Oficina e Autopeças</span><span>Manutenção automotiva e produtos para seu veículo.</span></div></footer>
+  <script>
+  (() => {
+    const $ = (id) => document.getElementById(id);
+    const panel = $('chatPanel'), messages = $('chatMessages'), input = $('chatInput');
+    const waBase = 'https://wa.me/5567996642105?text=';
+    $('year').textContent = new Date().getFullYear();
+
+    function normalize(value) {
+      return value.toLocaleLowerCase('pt-BR').normalize('NFD').replace(/[\u0300-\u036f]/g, '').trim();
+    }
+    function addMessage(text, who) {
+      const item = document.createElement('div');
+      item.className = 'chat-msg ' + who;
+      item.textContent = text;
+      messages.appendChild(item);
+      messages.scrollTop = messages.scrollHeight;
+    }
+    function addWhatsApp(question) {
+      const link = document.createElement('a');
+      link.className = 'btn';
+      link.href = waBase + encodeURIComponent('Olá! Vim pelo site da oficina Dorilio Henrique. ' + question);
+      link.target = '_blank'; link.rel = 'noopener';
+      link.textContent = 'Falar com a equipe pelo WhatsApp';
+      link.style.margin = '0 14px 12px'; link.style.fontSize = '.85rem';
+      messages.appendChild(link);
+      messages.scrollTop = messages.scrollHeight;
+    }
+    function getAnswer(original) {
+      const q = normalize(original);
+      if (!q) return 'Digite sua dúvida para eu ajudar.';
+      if (/\b(oi|ola|bom dia|boa tarde|boa noite|tudo bem|quem e voce)\b/.test(q))
+        return 'Olá! 😊 Sou a assistente virtual da Dorilio Henrique Oficina e Autopeças. Posso ajudar com horários, pneus, óleos, filtros, peças e serviços. O que você precisa?';
+      if (/(horario|abre|aberto|fecha|funciona|atendimento|domingo|sabado|segunda|terca|quarta|quinta|sexta)/.test(q))
+        return 'Nosso horário de funcionamento é:\n• Segunda a sexta: das 08:00 às 18:00\n• Sábado: das 08:00 às 12:00\n• Domingo: fechado. 😊';
+      if (/(preco|valor|custa|quanto|orcamento|mao de obra|parcel|pagamento)/.test(q))
+        return 'O valor depende do produto, da marca, da medida ou do serviço. Ainda não tenho uma tabela de preços cadastrada e não quero informar um valor incorreto. Diga o que procura e posso encaminhar sua solicitação à equipe pelo WhatsApp.';
+      if (/(pneu|pneus|medida|aro)/.test(q))
+        return 'Trabalhamos com pneus. 🛞 Para consultar medida, marca, estoque e preço, informe a medida que aparece na lateral do pneu (ex.: 175/70 R14) ou o modelo e ano do veículo.';
+      if (/(oleo|lubrificante|viscosidade)/.test(q))
+        return 'Temos óleos lubrificantes. 🛢️ A especificação depende do veículo. Informe modelo, ano e motorização para a equipe verificar a opção correta, disponibilidade e preço.';
+      if (/(filtro|filtros)/.test(q))
+        return 'Trabalhamos com filtros, incluindo opções de óleo e ar. Para conferir a aplicação correta, informe modelo, ano e motorização do veículo.';
+      if (/(peca|pecas|acessorio|acessorios)/.test(q))
+        return 'Também temos peças e acessórios. 🔩 Diga qual peça procura e informe modelo e ano do veículo para verificarmos compatibilidade, estoque e valor.';
+      if (/(produto|vendem|vende|loja|estoque|marca)/.test(q))
+        return 'Na loja você encontra pneus, óleos lubrificantes, filtros e peças. Para consultar marcas, modelos, estoque e valores, diga o produto que procura e o veículo.';
+      if (/(servico|manutencao|mecanica|revisao|troca|conserto|freio|suspensao)/.test(q))
+        return 'Podemos orientar sobre manutenção automotiva. 🔧 Descreva o serviço ou problema e informe modelo e ano do veículo. A equipe confirma a avaliação e o orçamento.';
+      if (/(endereco|onde fica|localizacao|local)/.test(q))
+        return 'O endereço ainda não foi cadastrado no site. Fale com a equipe pelo WhatsApp para receber a localização.';
+      if (/(atendente|pessoa|humano|whatsapp|falar com alguem|contato)/.test(q))
+        return 'Claro! Clique no botão abaixo para falar diretamente com a equipe.';
+      if (/(obrigad|valeu|tchau|ate mais)/.test(q))
+        return 'Por nada! 😊 A Dorilio Henrique Oficina e Autopeças agradece seu contato. Estamos à disposição!';
+      return 'Entendi sua pergunta! Posso ajudar com horários, pneus, óleos, filtros, peças e manutenção. Para eu orientar melhor, diga qual produto ou serviço procura e, se for uma peça para o carro, informe modelo e ano. Se preferir, fale com a equipe pelo WhatsApp.';
+    }
+    function send(question) {
+      const clean = question.trim();
+      if (!clean) return;
+      addMessage(clean, 'user');
+      const answer = getAnswer(clean);
+      addMessage(answer, 'bot');
+      const q = normalize(clean);
+      if (/(preco|valor|custa|quanto|orcamento|estoque|marca|atendente|whatsapp|endereco|localizacao)/.test(q)) addWhatsApp('Minha dúvida: ' + clean);
+    }
+    $('chatLauncher').addEventListener('click', () => { panel.classList.add('open'); input.focus(); });
+    $('chatClose').addEventListener('click', () => panel.classList.remove('open'));
+    document.querySelectorAll('.chat-quick button').forEach((button) => {
+      button.addEventListener('click', () => send(button.dataset.question || button.textContent));
+    });
+    function handleSend() {
+      const question = input.value;
+      if (!question.trim()) {
+        input.focus();
+        return;
+      }
+      input.value = '';
+      send(question);
+      input.focus();
+    }
+    // Clique no botão e tecla Enter usam exatamente a mesma rotina.
+    $('chatSend').addEventListener('click', handleSend);
+    $('chatForm').addEventListener('submit', (event) => {
+      event.preventDefault();
+      handleSend();
+    });
+    input.addEventListener('keydown', (event) => {
+      if (event.key === 'Enter' && !event.shiftKey) {
+        event.preventDefault();
+        handleSend();
+      }
+    });
+
+    // Animacoes progressivas: revelacao ao rolar e brilho seguindo o ponteiro.
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (!reduceMotion) {
+      document.body.classList.add('motion-ready');
+      const revealTargets = document.querySelectorAll(
+        '.eyebrow, .section-head, .hero-grid > *, .cards .card, .product, .why > *, .contact-grid > *, .contact-item, footer .footer-row'
+      );
+      revealTargets.forEach((element, index) => {
+        element.setAttribute('data-reveal', '');
+        element.style.setProperty('--reveal-delay', `${(index % 4) * 85}ms`);
+      });
+      if ('IntersectionObserver' in window) {
+        const revealObserver = new IntersectionObserver((entries, observer) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('is-visible');
+              observer.unobserve(entry.target);
+            }
+          });
+        }, { threshold: 0.12, rootMargin: '0px 0px -35px 0px' });
+        revealTargets.forEach(element => revealObserver.observe(element));
+      } else {
+        revealTargets.forEach(element => element.classList.add('is-visible'));
+      }
+
+      // Um brilho discreto acompanha o mouse nos paineis, sem atrapalhar o toque.
+      const glowTargets = document.querySelectorAll('.hero-card, .card, .product, .why-panel, .contact-item');
+      glowTargets.forEach(element => {
+        element.classList.add('motion-pointer');
+        element.addEventListener('pointermove', event => {
+          if (event.pointerType === 'touch') return;
+          const rect = element.getBoundingClientRect();
+          const x = ((event.clientX - rect.left) / rect.width) * 100;
+          const y = ((event.clientY - rect.top) / rect.height) * 100;
+          element.style.backgroundImage = `radial-gradient(240px circle at ${x}% ${y}%, rgba(40,215,255,.12), transparent 72%), linear-gradient(145deg, rgba(19,35,57,.88), rgba(9,17,31,.88))`;
+        });
+        element.addEventListener('pointerleave', () => { element.style.backgroundImage = ''; });
+      });
+
+      // Movimento suave do elemento decorativo do destaque conforme o mouse.
+      const hero = document.querySelector('.hero');
+      if (hero) {
+        hero.addEventListener('pointermove', event => {
+          if (event.pointerType === 'touch') return;
+          const rect = hero.getBoundingClientRect();
+          const dx = (event.clientX - rect.left) / rect.width - .5;
+          const dy = (event.clientY - rect.top) / rect.height - .5;
+          hero.style.setProperty('--parallax-x', `${dx * 10}px`);
+          hero.style.setProperty('--parallax-y', `${dy * 10}px`);
+        });
+        hero.addEventListener('pointerleave', () => {
+          hero.style.setProperty('--parallax-x', '0px');
+          hero.style.setProperty('--parallax-y', '0px');
+        });
+      }
+    }
+  })();
+  </script>
+</body>
+</html>
